@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Hello Extension",
+  "version": "1.0",
+  "description": "Displays 'Hello, World!' in the console and copies to clipboard.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["clipboardWrite"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "128": "icon.png"
+  }
+}
