@@ -1,27 +1,34 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const copyBtn = document.getElementById("copyBtn");
-  const copyBtnLists = document.getElementsByClassName("copyBtnList");
-  Array.from(copyBtnLists).forEach((btn) => {
-    btn.addEventListener("click", function() {
-      copyToClipboard()
+const btnList = {
+  記事作成: 'ここまでのやり取りを概要をまとめてWeb記事にしたいです。Markdownを使用して作成してください。このとき項目ごとにmarkdownを用いてフレンドリーでキャッチーな見出しと作業内容・先ほどの回答で使用したコードブロックを利用して作成してください。出力する文章は堅苦しくなくフレンドリーな文章にしてください。また冒頭には「この記事はOpenAIを用いて作成したものに加筆修正を加えたものです」と注意書きをしてください',
+  こんにちは: 'ここからのやりとり',
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.getElementById('container')
+  for (const [btnName, value] of Object.entries(btnList)) {
+    const btn = document.createElement('button');
+    btn.textContent = btnName
+    container.appendChild(btn)
+    btn.addEventListener("click", function () {
+      copyToClipboard(value)
     });
+  }
 
-  })
-  copyBtn.addEventListener("click", function() {
-  });
 
-  function copyToClipboard() {
-
-    navigator.clipboard.writeText(Prompt.getSummaryArticle)
+  function copyToClipboard(message) {
+    navigator.clipboard.writeText(message)
       .then(() => {
-          const message = document.getElementById('message')
-          message.style.display = 'block'
-          const container = document.getElementById('container')
-          container.style.display = 'none'
-          setTimeout(() => {
-            window.close()
-          }, 1000)
-        }
+        const container = document.getElementById('container')
+        container.style.fontSize = '20px'
+        container.style.color = '#fff';
+        container.style.letterSpacing = '0.05em';
+        container.style.backgroundColor = '#666';
+        container.innerHTML = 'copied'
+        setTimeout(() => {
+          window.close()
+        }, 1000)
+      }
       )
       .catch(error => console.error("コピーできませんでした:", error));
   }

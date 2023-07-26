@@ -6,20 +6,30 @@
   <style>
     body {
       min-width: 200px;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
     }
     button {
-      padding: 8px 12px;
+      margin: 5px auto;
+      padding: 8px 20px;
+      min-width: 150px;
+      background-color: #1e1e1e;
+      color: #fff;
+      border-radius: 5px;
+    }
+
+    #container {
+      display: flex;
+      justify-items: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 10px;
     }
   </style>
 </head>
 <body>
   <div id="container">
-    <button id="copyBtn">コピーする</button>
-    <button class="copyBtnList">コピーする1</button>
-    <button class="copyBtnList">コピーする2</button>
   </div>
-  <div id="message" style="display:none;background-color:#ddd;color:#fff">コピーしました</div>
   <script src="popup.js"></script>
 </body>
 </html>
