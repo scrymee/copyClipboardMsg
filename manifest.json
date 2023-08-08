@@ -1,18 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "Hello Extension",
+  "name": "Message Copyくん",
   "version": "1.0",
-  "description": "Displays 'Hello, World!' in the console and copies to clipboard.",
+  "description": "テキストをクリップボードにコピーします",
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": ["clipboardWrite"],
+  "permissions": ["clipboardWrite", "storage"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
   ],
+  "options_page": "options/index.html",
   "icons": {
     "128": "icon.png"
   }
